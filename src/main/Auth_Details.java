@@ -1,6 +1,5 @@
 package main;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -181,3 +180,164 @@ public class Auth_Details extends javax.swing.JFrame {
                                         .addComponent(nom_utilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
         );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        setSize(new java.awt.Dimension(685, 503));
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void nom_utilisateurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_nom_utilisateurItemStateChanged
+        String sql;
+        if(Jour.getSelectedIndex()==0&&Mois.getSelectedIndex()==0&&Année.getSelectedIndex()==0){
+            sql = "select NOM,TYPE,DATE,TEMPS from login where NOM='"+nom_utilisateur.getSelectedItem()+"' ";
+        }else {
+            sql = "select NOM,TYPE,DATE,TEMPS from login where NOM='"+nom_utilisateur.getSelectedItem()+"' and DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }  try {
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(res));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }//GEN-LAST:event_nom_utilisateurItemStateChanged
+
+    private void JourItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JourItemStateChanged
+        String sql ;
+        if(Mois.getSelectedIndex()!=0&&Année.getSelectedIndex()!=0&&nom_utilisateur.getSelectedIndex()==0){
+            sql = "select NOM,TYPE,DATE,TEMPS from login where DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }else {
+            sql = "select NOM,TYPE,DATE,TEMPS from login where NOM='"+nom_utilisateur.getSelectedItem()+"' and DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }
+        try {
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }//GEN-LAST:event_JourItemStateChanged
+
+    private void MoisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MoisItemStateChanged
+        String sql;
+        if(Jour.getSelectedIndex()!=0&&Mois.getSelectedIndex()!=0&&Année.getSelectedIndex()!=0&&nom_utilisateur.getSelectedIndex()==0){
+            sql = "select NOM,TYPE,DATE,TEMPS from login where DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }else {
+            sql = "select NOM,TYPE,DATE,TEMPS from login where NOM='"+nom_utilisateur.getSelectedItem()+"' and DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }
+        try {
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+
+    }//GEN-LAST:event_MoisItemStateChanged
+
+    private void AnnéeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnnéeItemStateChanged
+        String sql;
+        if(Mois.getSelectedIndex()!=0&&Jour.getSelectedIndex()!=0&&nom_utilisateur.getSelectedIndex()==0){
+            sql = "select NOM,TYPE,DATE,TEMPS from login where DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }else {
+            sql = "select NOM,TYPE,DATE,TEMPS from login where NOM='"+nom_utilisateur.getSelectedItem()+"' and DATE='"+Jour.getSelectedItem()+"-"+Mois.getSelectedItem()+"-"+Année.getSelectedItem()+"' ";
+        }
+        try {
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+
+    }//GEN-LAST:event_AnnéeItemStateChanged
+
+    /**
+     * @param args
+     */
+    public static void main(String args[]) {
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Auth_Details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Auth_Details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Auth_Details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Auth_Details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Auth_Details().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> Année;
+    public javax.swing.JComboBox<String> Jour;
+    public javax.swing.JComboBox<String> Mois;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> nom_utilisateur;
+    // End of variables declaration//GEN-END:variables
+    private void Remplir_Nomutilisateur(){
+        String sql = "select NOM from utilisateur";
+        try {
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            while(res.next()){
+                nom_utilisateur.addItem(res.getString("NOM"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
+}

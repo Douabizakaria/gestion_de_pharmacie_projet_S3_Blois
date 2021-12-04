@@ -75,13 +75,13 @@ public class Changer_Motdepasse extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change Your Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         confirmer.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+            public void keyReleased (java.awt.event.KeyEvent evt) {
                 confirmerKeyReleased(evt);
             }
         });
 
         nouveau_mot_passe.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+            public void keyReleased (java.awt.event.KeyEvent evt) {
                 nouveau_mot_passeKeyReleased(evt);
             }
         });
@@ -102,3 +102,4 @@ public class Changer_Motdepasse extends javax.swing.JFrame {
 
         we_st.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         we_st.setText("trés faible");
+    }

@@ -1,4 +1,3 @@
-
 package main;
 
 import java.sql.Connection;
@@ -14,7 +13,7 @@ PreparedStatement pre= null;
 ResultSet res = null;
     public Fournisseur() {
         initComponents();
-        con=Connexion.connexion();
+        con=Connexion.connexion(); //connection
         Fournisseurliste();
     }
 

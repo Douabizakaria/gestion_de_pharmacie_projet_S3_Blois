@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.ImageIcon; // outil pour importer image 
 
 public class Pharmacie extends javax.swing.JFrame {
     Connection con = null;

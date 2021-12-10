@@ -8,6 +8,7 @@ import net.proteanit.sql.DbUtils;
 
 
 public class Auth_Details extends javax.swing.JFrame {
+
     Connection con = null;
     PreparedStatement pre = null;
     ResultSet res= null;

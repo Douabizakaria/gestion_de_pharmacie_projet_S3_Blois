@@ -1,3 +1,7 @@
+/**
+ * @author DOUABI MEHDI
+ * TEST SUR LA CLASSE AUTH_DETAILS
+ */
 package main;
 
 import java.awt.event.ActionEvent;

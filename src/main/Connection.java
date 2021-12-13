@@ -1,3 +1,7 @@
+/**
+ * @author DOUABIZAKARIA
+ * @version 1.1
+ */
 package main;
 import javax.swing.*;
 import java.sql.Connection;

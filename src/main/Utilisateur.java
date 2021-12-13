@@ -1,4 +1,7 @@
-
+/**
+ * @author DOUABIZAKARIA
+ * @version 1.6
+ */
 package main;
 
 import java.sql.Connection;
